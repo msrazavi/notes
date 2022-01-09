@@ -38,12 +38,12 @@ Q-learning is a <strong>sample-based</strong> q-value iteration method and in it
 <li>Consider your old estimate: $Q(s_t,a_t)$</li>
 <li>Consider your new sample estimate:</li>
 </ul>
-<p>$$sample = R(s,a,s') + \gamma max_{a'}Q(s',a') = r_t + \gamma max_aQ(s_{t+1},a)$$</p>
+<p>$$sample = R(s,a,s^{\prime}) + \gamma \max_{a^{\prime}}Q(s^{prime},a^{\prime}) = r_t + \gamma \max_aQ(s_{t+1},a)$$</p>
 <ul>
 <li>Incorporate the new estimate into a running average:</li>
 </ul>
 <p>$$Q(s,a) \leftarrow (1 - \alpha)Q(s,a) + \alpha(sample)$$</p>
-<p>$$\rightarrow Q^{new}(s_t,a_t) \leftarrow \underbrace{Q(s_t,a_t)}<em>\text{old value} + \underbrace{\alpha}</em>\text{learning rate} . \overbrace{(\underbrace{\underbrace{r_t}<em>\text{reward} + \underbrace{\gamma}</em>\text{discount factor} . \underbrace{max_aQ(s_{t+1},a)}<em>\text{estimate of optimal future value}}</em>\text{new value (temporal difference target)} - \underbrace{Q(s_t,a_t)}_\text{old value})}^\text{temporal difference}$$</p>
+<p>$$\rightarrow Q^{new}(s_t,a_t) \leftarrow \underbrace{Q(s_t,a_t)}<em>\text{old value} + \underbrace{\alpha}</em>\text{learning rate} . \overbrace{(\underbrace{\underbrace{r_t}<em>\text{reward} + \underbrace{\gamma}</em>\text{discount factor} . \underbrace{\max_aQ(s_{t+1},a)}<em>\text{estimate of optimal future value}}</em>\text{new value (temporal difference target)} - \underbrace{Q(s_t,a_t)}_\text{old value})}^\text{temporal difference}$$</p>
 <p><img alt="Q-values" src="/notes/assets/images/1.png" style="width:30%;display: block;margin-left: auto;margin-right: auto;"/></p>
 <div id="active-rl"><h1> Active RL </h1></div>
 <p>In active RL, an agent needs to decide what to do as there’s no fixed policy that it can act on. Therefore, the goal of an active RL agent is to act and learn an optimal policy. An agent interacts with the environment either by exploring or exploiting. <strong>Exploration</strong> is all about finding more information about an environment, whereas <strong>exploitation</strong> is exploiting already known information to maximize the rewards.</p>
@@ -56,7 +56,7 @@ The problem with random actions is that you do eventually explore the space, but
 <div id="exploration-functions"><h2> Exploration functions </h2></div>
 <p>Another solution is to use <strong>exploration functions</strong>. For example, this function can take a value estimate u and a visit count n, and return an optimistic utility, e.g. $f(u,n) = v + \frac{k}{n}$ . we are counting how many times we did some random action. if it had yet to reach a fixed amount, we should try it more often and if it doesn't return a good output we should just stop exploring it.
 So we’ll use a modified Q-update:</p>
-<p>$$Q(s,a) \leftarrow <em a_="a'">\alpha R(s,a,s') + \gamma max</em> f(Q(s',a'),N(s',a'))$$</p>
+<p>$$Q(s,a) \leftarrow \alpha R(s,a,s^{\prime}) + \gamma \max_{a^{\prime}} f(Q(s^{\prime},a^{\prime}),N(s^{\prime},a^{\prime}))$$</p>
 <p>in above equation k is fixed. Q is the optimistic utility which is given to f as v. and n is the number of times we visited s' after doing action a' starting from s. which means when the n is low we get to try those actions more often.</p>
 <div id="regret"><h1> Regret </h1></div>
 <p>Even though most of the RL algorithms we discussed reach optimal policy, they still make mistakes along the way. Regret is a measure of the total mistake cost, the difference between rewards, including and optimal rewards.
@@ -68,7 +68,7 @@ Minimizing regret goes beyond learning to be optimal so it requires optimally le
 <p>$$V(s) = \omega_1f_1(s) + \omega_2f_2(s) + ... + \omega_nf_n(s)$$</p>
 <p>$$Q(s,a) = \omega_1f_1(s,a) + \omega_2f_2(s,a) + ... + \omega_nf_n(s,a)$$</p>
 <p>To learn and update wis, we have a method which is similar to the method we had for updating Q-values in basic Q-learning :</p>
-<p>$$\omega_m \leftarrow \omega_m + \alpha [r + \gamma max_aQ(s',a') - Q(s,a)] f_m(s,a)$$</p>
+<p>$$\omega_m \leftarrow \omega_m + \alpha [r + \gamma \max_aQ(s^{\prime},a^{\prime}) - Q(s,a)] f_m(s,a)$$</p>
 <div id="conclusion"><h1> Conclusion </h1></div>
 <p>Q-Learning is a basic form of Reinforcement Learning which uses Q-values (action values) to iteratively improve the behavior of the learning agent.</p>
 <p>Q-values are defined for states and actions. $Q(s, a)$ is an estimation of how good is it to take the action a at the state s. This estimation of $Q(s, a)$ will be iteratively computed using the temporal difference update.</p>
