@@ -115,6 +115,7 @@ notebooks:
     link: /notes/notebooks/18_reinforcement_learning/
     text: <p>Reinforcement Learning</p>
   - md: notebooks/22_reinforcement_learning_from_q_value_till_the_end/
+    metadata: notebooks/22_reinforcement_learning_from_q_value_till_the_end/metadata.yml
     kind: F2021, LN
     link: /notes/notebooks/22_reinforcement_learning_from_q_value_till_the_end/
 kind: Index
