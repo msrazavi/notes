@@ -38,7 +38,7 @@ Q-learning is a <strong>sample-based</strong> q-value iteration method and in it
 <ul>
 <li>Incorporate the new estimate into a running average:</li>
 </ul>
-<p>$$Q(s,a) \leftarrow (1 - \alpha)Q(s,a) + <a href="sample">\alpha</a>$$</p>
+<p>$$Q(s,a) \leftarrow (1 - \alpha)Q(s,a) + \alpha(sample)$$</p>
 <p>$$\rightarrow Q^{new}(s_t,a_t) \leftarrow \underbrace{Q(s_t,a_t)}<em>\text{old value} + \underbrace{\alpha}</em>\text{learning rate} . \overbrace{(\underbrace{\underbrace{r_t}<em>\text{reward} + \underbrace{\gamma}</em>\text{discount factor} . \underbrace{max_aQ(s_{t+1},a)}<em>\text{estimate of optimal future value}}</em>\text{new value (temporal difference target)} - \underbrace{Q(s_t,a_t)}_\text{old value})}^\text{temporal difference}$$</p>
 <p><img alt="Q-values" src="/notes/assets/images/1.png" style="width:300px;display: block;margin-left: auto;margin-right: auto;"/></p>
 <h1>Active RL</h1>
