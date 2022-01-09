@@ -34,18 +34,18 @@ Q-learning is a <strong>sample-based</strong> q-value iteration method and in it
 <li>Consider your old estimate: $Q(s_t,a_t)$</li>
 <li>Consider your new sample estimate:</li>
 </ul>
-<p>$$sample = R(s,a,s') + \gamma max_a'Q(s',a') = r_t + \gamma max_aQ(s_{t+1},a)$$</p>
+<p>$$sample = R(s,a,s') + \gamma max_{a'}Q(s',a') = r_t + \gamma max_aQ(s_{t+1},a)$$</p>
 <ul>
 <li>Incorporate the new estimate into a running average:</li>
 </ul>
 <p>$$Q(s,a) \leftarrow (1 - \alpha)Q(s,a) + \alpha(sample)$$</p>
 <p>$$\rightarrow Q^{new}(s_t,a_t) \leftarrow \underbrace{Q(s_t,a_t)}<em>\text{old value} + \underbrace{\alpha}</em>\text{learning rate} . \overbrace{(\underbrace{\underbrace{r_t}<em>\text{reward} + \underbrace{\gamma}</em>\text{discount factor} \dot \underbrace{max_aQ(s_{t+1},a)}<em>\text{estimate of optimal future value}}</em>\text{new value (temporal difference target)} - \underbrace{Q(s_t,a_t)}_\text{old value})}^\text{temporal difference}$$</p>
-<p><img alt="Q-values" src="/notes/assets/images/1.png" style="width:300px;display: block;margin-left: auto;margin-right: auto;"/></p>
+<p><img alt="Q-values" src="/notes/assets/images/1.png" style="width:30%;display: block;margin-left: auto;margin-right: auto;"/></p>
 <h1>Active RL</h1>
 <p>In active RL, an agent needs to decide what to do as there’s no fixed policy that it can act on. Therefore, the goal of an active RL agent is to act and learn an optimal policy. An agent interacts with the environment either by exploring or exploiting. <strong>Exploration</strong> is all about finding more information about an environment, whereas <strong>exploitation</strong> is exploiting already known information to maximize the rewards.</p>
 <h2>Real life example</h2>
 <p>Say you go to the same restaurant every day. You are basically exploiting. But on the other hand, if you search for new restaurant every time before going to any one of them, then it’s exploration. Exploration is very important for the search of future rewards which might be higher than the near rewards.</p>
-<p><img alt="Exploration vs. Exploitation" src="/notes/assets/images/2.png" style="width:300px;display: block;margin-left: auto;margin-right: auto;"/></p>
+<p><img alt="Exploration vs. Exploitation" src="/notes/assets/images/2.png" style="width:30%;display: block;margin-left: auto;margin-right: auto;"/></p>
 <h2>Epsilon greedy strategy</h2>
 <p>The tradeoff between exploration and exploitation is fundamental. the simplest way to force exploration is using <strong>epsilon greedy strategy</strong>. This method does a random action with a small probability of $\epsilon$ (exploration) and with a probability of $(1 - \epsilon)$ does the current policy action (exploitation).
 The problem with random actions is that you do eventually explore the space, but keep thrashing around once learning is done. one solution is to start with a higher $\epsilon$ rate and as the agent explores the environment, the ϵ rate decreases and the agent starts to exploit the environment.</p>
