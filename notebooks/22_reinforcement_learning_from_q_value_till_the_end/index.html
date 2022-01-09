@@ -8,12 +8,12 @@ layout: content
 <li><a href="#rl-types-of-algorithms">RL Types of Algorithms</a></li>
 <li><a href="#q-learning">Q-Learning</a></li>
 <li><a href="#active-rl">Active RL</a></li>
-<li><a href="#real-life-example">Real life example</a></li>
-<li><a href="#epsilon-greedy-strategy">Epsilon greedy strategy</a></li>
-<li><a href="#exploration-functions">Exploration functions</a></li>
+<li><a href="##real-life-example">Real life example</a></li>
+<li><a href="##epsilon-greedy-strategy">Epsilon greedy strategy</a></li>
+<li><a href="##exploration-functions">Exploration functions</a></li>
 <li><a href="#regret">Regret</a></li>
 <li><a href="#approximate-q-learning">Approximate Q-Learning</a></li>
-<li><a href="#feature-based-representation">Feature-based representation</a></li>
+<li><a href="##feature-based-representation">Feature-based representation</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 <li><a href="#further-reading">Further Reading</a></li>
 <li><a href="#references">References</a></li>
@@ -52,7 +52,7 @@ The problem with random actions is that you do eventually explore the space, but
 <h2>Exploration functions</h2>
 <p>Another solution is to use <strong>exploration functions</strong>. For example, this function can take a value estimate u and a visit count n, and return an optimistic utility, e.g. $f(u,n) = v + \frac{k}{n}$ . we are counting how many times we did some random action. if it had yet to reach a fixed amount, we should try it more often and if it doesn't return a good output we should just stop exploring it.
 So we’ll use a modified Q-update:</p>
-<p>$$Q(s,a) \leftarrow _\alpha R(s,a,s') + \gamma max_a' f(Q(s',a'),N(s',a'))$$</p>
+<p>$$Q(s,a) \leftarrow <em a_="a'">\alpha R(s,a,s') + \gamma max</em> f(Q(s',a'),N(s',a'))$$</p>
 <p>in above equation k is fixed. Q is the optimistic utility which is given to f as v. and n is the number of times we visited s' after doing action a' starting from s. which means when the n is low we get to try those actions more often.</p>
 <h1>Regret</h1>
 <p>Even though most of the RL algorithms we discussed reach optimal policy, they still make mistakes along the way. Regret is a measure of the total mistake cost, the difference between rewards, including and optimal rewards.
