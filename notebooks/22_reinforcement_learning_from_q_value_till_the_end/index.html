@@ -48,7 +48,7 @@ Q-learning is a <strong>sample-based</strong> q-value iteration method and in it
 <div id="active-rl"><h1> Active RL </h1></div>
 <p>In active RL, an agent needs to decide what to do as there’s no fixed policy that it can act on. Therefore, the goal of an active RL agent is to act and learn an optimal policy. An agent interacts with the environment either by exploring or exploiting. <strong>Exploration</strong> is all about finding more information about an environment, whereas <strong>exploitation</strong> is exploiting already known information to maximize the rewards.</p>
 <div id="real-life-example"><h2> Real life example </h2></div>
-<p>Say you go to the same restaurant every day. You are basically exploiting. But on the other hand, if you search for a new restaurant every time before going to any one of them, then it’s exploration. Exploration is very important for the search for future rewards which might be higher than the near rewards.</p>
+<p>Say you go to the same restaurant every day. You are exploiting. But on the other hand, if you search for a new restaurant every time before going to any one of them, then it’s exploration. Exploration is very important for the search for future rewards which might be higher than the near rewards.</p>
 <p><img alt="Exploration vs. Exploitation" src="/notes/assets/images/2.png" style="width:30%;display: block;margin-left: auto;margin-right: auto;"/></p>
 <div id="epsilon-greedy-strategy"><h2> Epsilon greedy strategy </h2></div>
 <p>The tradeoff between exploration and exploitation is fundamental. the simplest way to force exploration is using <strong>epsilon greedy strategy</strong>. This method does a random action with a small probability of $\epsilon$ (exploration) and with a probability of $(1 - \epsilon)$ does the current policy action (exploitation).
@@ -64,7 +64,7 @@ Minimizing regret goes beyond learning to be optimal so it requires optimally le
 <div id="approximate-q-learning"><h1> Approximate Q-Learning </h1></div>
 <p>Basic Q-learning keeps a table of all Q-values but in real-world situations, there are too many states to visit and hold their Q-values. Instead, we can use function approximation, which simply means using any sort of representation for the Q-function other than a lookup table. The representation is viewed as approximate because it might not be the case that the true utility function or Q-function can be represented in the chosen form.</p>
 <div id="feature-based-representation"><h2> Feature-based representation </h2></div>
-<p>One way of using this is to use a feature-based representation in which we describe a state using a vector of features. In this method, we represent a <strong>linear</strong> combination of these features and try to learn $\omega_i$s so that the Q function is near to the main Q-value.</p>
+<p>One way of using this is to use a feature-based representation in which we describe a state using a vector of features. In this method, we represent a <strong>linear</strong> combination of these features and try to learn $\omega_i$s so that the Q function is near the main Q-value.</p>
 <p>$$V(s) = \omega_1f_1(s) + \omega_2f_2(s) + ... + \omega_nf_n(s)$$</p>
 <p>$$Q(s,a) = \omega_1f_1(s,a) + \omega_2f_2(s,a) + ... + \omega_nf_n(s,a)$$</p>
 <p>To learn and update $\omega_i$s, we have a method that is similar to the method we had for updating Q-values in basic Q-learning:</p>
